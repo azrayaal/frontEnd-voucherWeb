@@ -8,7 +8,7 @@ export default function NavbarReal() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand to="/">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand to="/">azrayaal store</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

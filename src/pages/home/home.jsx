@@ -16,7 +16,7 @@ export default function Home() {
       <NavbarReal />
       <Carosel />
       <Container>
-        <div className="py-5">
+        <div className="py-3">
           <Container className="bg-cerah py-4 rounded-4">
             <h3>Games</h3>
             <Row xs={3} md={6} className="g-3">
@@ -79,7 +79,7 @@ export default function Home() {
           </Container>
         </div>
       </Container>
-      <Footer />
+      <Footer className="pt-2" />
     </div>
   );
 }

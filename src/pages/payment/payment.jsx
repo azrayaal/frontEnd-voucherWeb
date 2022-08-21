@@ -12,6 +12,7 @@ import CardItem from '../../components/cards/cardItem/cardItem';
 import Footer from '../../components/footer/footer';
 import CardPayment from '../../components/cards/cardPayment/cardPayment';
 import CardOrder from '../../components/cards/cardOrder/cardOrder';
+import CardDesc from '../../components/cards/cardDesc/cardDesc';
 
 export default function Payment() {
   return (
@@ -20,26 +21,31 @@ export default function Payment() {
       <Container className="py-5">
         <Row className="g-3">
           <Col sm={1} md={4}>
-            <Card.Img variant="top" src={GambarKartu} className="rounded" />
+            <Card.Img variant="top" src={GambarKartu} className="rounded pb-3" />
+            <CardDesc className="" />
           </Col>
           <Col sm={1} md={8}>
             <CardId />
+            <br />
+            <CardItem />
+            <br />
+            <CardPayment />
+            <br />
+            <CardOrder />
           </Col>
         </Row>
-        <Row className="g-3">
+
+        {/* <Row className="g-3">
           <Col sm={1} md={4}>
             <CardId />
           </Col>
           <Col sm={1} md={8}>
-            <CardItem />
           </Col>
           <Col sm={1} md={8}>
-            <CardPayment />
           </Col>
           <Col sm={1} md={8}>
-            <CardOrder />
           </Col>
-        </Row>
+        </Row> */}
       </Container>
       <Footer />
     </>
