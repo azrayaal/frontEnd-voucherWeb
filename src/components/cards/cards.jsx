@@ -1,11 +1,10 @@
-import Button from 'react-bootstrap/Button';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import GambarKartu from '../../image/valo.png';
 
-export default function Kartu() {
+export default function Kartu({ id, picture }) {
   return (
     <Card>
-      <Card.Img variant="top" src={GambarKartu} className="rounded" />
+      <Card.Img id={id} variant="top" src={`http://localhost:5000/${picture}`} className="rounded" />
       {/* <Card.Body>
         <Card.Title>Card Title</Card.Title>
         <Card.Text>Some quick example text to build on the card title and make up the bulk of the card's content.</Card.Text>

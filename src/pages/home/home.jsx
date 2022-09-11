@@ -3,14 +3,32 @@ import { Container } from 'react-bootstrap';
 import Carosel from '../../components/carousel/carousel';
 import NavbarReal from '../../components/navbar/navbar';
 import './home.css';
+import Card from 'react-bootstrap/Card';
+import { useEffect, useState } from 'react';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Kartu from '../../components/cards/cards';
 import Footer from '../../components/footer/footer';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Kartu from '../../components/cards/cards';
 
 export default function Home() {
+  const CARD_API = 'http://localhost:5000/gamedesc';
+
+  const [thumbnail, setTuhmbnail] = useState([]);
+
+  const fetchGambar = async () => {
+    const { data } = await axios.get(CARD_API).then((response) => {
+      // console.log('data =>', response.data);
+      setTuhmbnail(response.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchGambar();
+  }, []);
+
   return (
     <div>
       <NavbarReal />
@@ -20,61 +38,14 @@ export default function Home() {
           <Container className="bg-cerah py-4 rounded-4">
             <h3>Games</h3>
             <Row xs={3} md={6} className="g-3">
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
-              <Col>
-                <Link to="/payment">
-                  <Kartu />
-                </Link>
-              </Col>
+              {thumbnail &&
+                thumbnail.map((t) => (
+                  <Col>
+                    <Link to={`/payment/${t.id}`}>
+                      <Kartu key={t.id} id={t.id} picture={t.picture} />
+                    </Link>
+                  </Col>
+                ))}
             </Row>
           </Container>
         </div>
