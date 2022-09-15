@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import { useState } from 'react';
-import axios from 'axios';
 
-export default function CardItem() {
+export default function CardItem(props) {
+  // console.log(props);
+  const { item } = props;
   return (
     <Card>
       <Card.Body>
@@ -15,14 +15,14 @@ export default function CardItem() {
         </blockquote>
         <br />
         <Container fluid>
-          <Row xs={2} md={3} className="g-3">
-            {/* {item.map((i) => (
-              <Col>
-                <Button className="px-5 pt-2" jenis_coin={item}>
-                  {i.item}
+          <Row className="g-3">
+            {item.map((i) => (
+              <Col xs={12} md={6}>
+                <Button coins={i.coins} className="px-5 pt-2">
+                  {i.jumlahCoin} {i.jenisCoin} - {i.hargaCoin}
                 </Button>
               </Col>
-            ))} */}
+            ))}
           </Row>
         </Container>
       </Card.Body>

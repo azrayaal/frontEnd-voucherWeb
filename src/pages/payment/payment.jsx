@@ -16,19 +16,31 @@ import axios from 'axios';
 export default function Payment() {
   const [desc, setDesc] = useState('');
   const [picture, setPicture] = useState('');
+  const [payment, setPayment] = useState('');
+  const [item, setItems] = useState([]);
+  // const [dataItem, setDataItem] = useState('');
 
   const { id } = useParams();
-  const CARD_API = 'http://localhost:5000/gamedesc';
-
-  useEffect(() => {
+  const CARD_API = 'http://localhost:4000/voucher/getall';
+  const fetchData = async (id) => {
     if (id) {
       axios.get(`${CARD_API}/` + id).then((response) => {
         const { data } = response;
         setDesc(data.desc);
         setPicture(data.picture);
+        setItems(data.coins);
+        setPayment(data.payment);
+        console.log('dta=>', response.data);
       });
     }
-  }, [id]);
+  };
+
+  useEffect(
+    (data) => {
+      fetchData(id);
+    },
+    [id]
+  );
 
   return (
     <>
@@ -36,11 +48,11 @@ export default function Payment() {
       <Container className="py-5">
         <Row className="g-3">
           <Col sm={1} md={4}>
-            <Card.Img variant="top" src={`http://localhost:5000/${picture}`} className="rounded pb-3" />
+            <Card.Img variant="top" src={`http://localhost:4000/${picture}`} className="rounded pb-3" />
             <Card>
               <Card.Body>
                 <blockquote className="blockquote mb-0">
-                  <p desc={desc}>{desc}</p>
+                  <p>{desc}</p>
                 </blockquote>
               </Card.Body>
             </Card>
@@ -48,9 +60,9 @@ export default function Payment() {
           <Col sm={1} md={8}>
             <CardId />
             <br />
-            <CardItem />
+            <CardItem item={item} />
             <br />
-            <CardPayment />
+            <CardPayment payment={payment} />
             <br />
             <CardOrder />
           </Col>

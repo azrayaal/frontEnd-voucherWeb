@@ -4,52 +4,31 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 
-export default function CardPayment() {
+export default function CardPayment(props) {
+  const { payment } = props;
   return (
     <Card>
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p> 3. Metode Pembayaran </p>
+          <hr />
         </blockquote>
         <br />
         <Container fluid>
-          <hr />
-          <Row className="g-4 py-2">
-            <Col xs={4} md={4}>
-              <h3 className="px-auto pt-2">LOGOO</h3>
-            </Col>
-            <Col xs={8} md={8} className="d-grid">
-              <Button variant="primary">Block level button</Button>
-            </Col>
-          </Row>
-          <hr />
-          <Row className="g-4 py-2">
-            <Col xs={4} md={4}>
-              <h3 className="px-auto pt-2">LOGOO</h3>
-            </Col>
-            <Col xs={8} md={8} className="d-grid">
-              <Button variant="primary">Block level button</Button>
-            </Col>
-          </Row>
-          <hr />
-          <Row className="g-4 py-2">
-            <Col xs={4} md={4}>
-              <h3 className="px-auto pt-2">LOGOO</h3>
-            </Col>
-            <Col xs={8} md={8} className="d-grid">
-              <Button variant="primary">Block level button</Button>
-            </Col>
-          </Row>
-          <hr />
-          <Row className="g-4 py-2">
-            <Col xs={4} md={4}>
-              <h3 className="px-auto pt-2">LOGOO</h3>
-            </Col>
-            <Col xs={8} md={8} className="d-grid">
-              <Button variant="primary">Block level button</Button>
-            </Col>
-          </Row>
-          <hr />
+          {payment &&
+            payment.map((p) => (
+              <Row className="g-4 py-2">
+                <Col xs={4} md={4}>
+                  <Card.Img variant="top" src={`http://localhost:4000/${p.picture}`} className="rounded" />
+                </Col>
+                <Col xs={6} md={6}>
+                  <Button className="px-5 pt-2" variant="primary mx-3 mb-3">
+                    {p.bank_name}
+                  </Button>
+                </Col>
+                <hr />
+              </Row>
+            ))}
         </Container>
       </Card.Body>
     </Card>
