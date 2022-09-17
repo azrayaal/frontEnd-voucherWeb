@@ -33,7 +33,7 @@ export default function Home() {
     <div>
       <NavbarReal />
       <Carosel />
-      <Container>
+      <Container style={{ marginBottom: '96px' }}>
         <div className="py-3">
           <Container className="bg-cerah py-4 rounded-4">
             <h3 style={{ color: '#FF2768' }}>Games</h3>
@@ -50,7 +50,7 @@ export default function Home() {
           </Container>
         </div>
       </Container>
-      <Footer className="pt-2" />
+      <Footer />
     </div>
   );
 }
