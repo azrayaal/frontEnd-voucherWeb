@@ -36,7 +36,7 @@ export default function Home() {
       <Container>
         <div className="py-3">
           <Container className="bg-cerah py-4 rounded-4">
-            <h3>Games</h3>
+            <h3 style={{ color: '#FF2768' }}>Games</h3>
             <Row xs={3} md={6} className="g-3">
               {thumbnail &&
                 thumbnail.map((t) => (

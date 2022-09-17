@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 export default function Kartu(props) {
   const { id, picture } = props;
   return (
-    <Card>
+    <Card id="Games">
       <Card.Img id={id} variant="top" src={`http://localhost:4000/${picture}`} className="rounded" />
       {/* <Card.Body>
         <Card.Title>Card Title</Card.Title>

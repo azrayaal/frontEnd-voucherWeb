@@ -1,0 +1,11 @@
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.text-center {
+  background-color: #ff0f39;
+  color: #feda15;
+}
