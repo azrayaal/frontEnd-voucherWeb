@@ -1,20 +1,21 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import Carosel from '../../components/carousel/carousel';
-import NavbarReal from '../../components/navbar/navbar';
+// import NavbarReal from '../../components/navbar/navbar';
 import './home.css';
-import Card from 'react-bootstrap/Card';
+// import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from 'react';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Footer from '../../components/footer/footer';
+// import Footer from '../../components/footer/footer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Kartu from '../../components/cards/cards';
 
 export default function Home() {
-  const CARD_API = 'http://localhost:4000/voucher/getall';
+  const CARD_API = 'https://servertopupgame.azrayaal.space/voucher/getall';
+  // const CARD_API = 'http://localhost:4000/voucher/getall';
 
   const [thumbnail, setTuhmbnail] = useState([]);
 
@@ -31,7 +32,7 @@ export default function Home() {
 
   return (
     <div>
-      <NavbarReal />
+      {/* <NavbarReal /> */}
       <Carosel />
       <Container style={{ marginBottom: '96px' }}>
         <div className="py-3">
@@ -50,7 +51,7 @@ export default function Home() {
           </Container>
         </div>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
