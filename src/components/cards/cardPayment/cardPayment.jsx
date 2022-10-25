@@ -19,7 +19,7 @@ export default function CardPayment(props) {
             payment.map((p) => (
               <Row className="g-4 py-2">
                 <Col xs={4} md={4}>
-                  <Card.Img variant="top" src={`https://servertopupgame.azrayaal.space/${p.picture}`} className="rounded" />
+                  <Card.Img variant="top" src={`http://localhost:4000/${p.picture}`} className="rounded" />
                 </Col>
                 <Col xs={6} md={6}>
                   <Button className="px-5 pt-2" variant="primary mx-3 mb-3">

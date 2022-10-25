@@ -1,13 +1,14 @@
 footer {
-  /* position: absolute;
-  left: 0;
+  position: absolute;
   bottom: 0;
-  right: 0; */
-  /* display: block;
-  float: none; */
+  width: 100%;
 }
 
 .text-center {
   background-color: #ff0f39;
   color: #feda15;
+}
+
+.footerfix {
+  height: 4rem;
 }

@@ -18,7 +18,7 @@ export default function Payment() {
   const [item, setItems] = useState([]);
 
   const { id } = useParams();
-  const CARD_API = 'https://servertopupgame.azrayaal.space/voucher/getall';
+  const CARD_API = 'http://localhost:4000/getall';
   const fetchData = async (id) => {
     if (id) {
       axios.get(`${CARD_API}/` + id).then((response) => {
@@ -44,7 +44,7 @@ export default function Payment() {
       <Container className="py-5">
         <Row className="g-3">
           <Col sm={1} md={4}>
-            <Card.Img variant="top" src={`https://servertopupgame.azrayaal.space/${picture}`} className="rounded pb-3" />
+            <Card.Img variant="top" src={`http://localhost:4000/${picture}`} className="rounded pb-3" />
             <Card>
               <Card.Body>
                 <blockquote className="blockquote mb-0">
