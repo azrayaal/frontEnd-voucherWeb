@@ -14,8 +14,8 @@ import axios from 'axios';
 import Kartu from '../../components/cards/cards';
 
 export default function Home() {
-  const CARD_API = 'http://localhost:4000/voucher/getall';
   // const CARD_API = 'http://localhost:4000/voucher/getall';
+  const CARD_API = 'https://servertopupgame.azrayaal.space/getall';
 
   const [thumbnail, setTuhmbnail] = useState([]);
 
