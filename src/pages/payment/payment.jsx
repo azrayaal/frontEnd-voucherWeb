@@ -18,7 +18,7 @@ export default function Payment() {
   const [item, setItems] = useState([]);
 
   const { id } = useParams();
-  const CARD_API = 'https://servertopupgame.azrayaal.space/getall';
+  const CARD_API = 'https://servertopupgame.azrayaal.space/voucher/getall';
   const fetchData = async (id) => {
     if (id) {
       axios.get(`${CARD_API}/` + id).then((response) => {

@@ -15,13 +15,13 @@ import Kartu from '../../components/cards/cards';
 
 export default function Home() {
   // const CARD_API = 'http://localhost:4000/voucher/getall';
-  const CARD_API = 'https://servertopupgame.azrayaal.space/getall';
+  const CARD_API = 'http://localhost:4020/voucher';
 
   const [thumbnail, setTuhmbnail] = useState([]);
 
   const fetchGambar = async () => {
     const { data } = await axios.get(CARD_API).then((response) => {
-      // console.log('data =>', response.data);
+      console.log('data =>', response.data);
       setTuhmbnail(response.data);
     });
   };
