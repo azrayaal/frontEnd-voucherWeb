@@ -1,16 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Carosel from '../../components/carousel/carousel';
-// import NavbarReal from '../../components/navbar/navbar';
 import './home.css';
-// import Card from 'react-bootstrap/Card';
-import { useEffect, useState } from 'react';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-// import Footer from '../../components/footer/footer';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
 import Kartu from '../../components/cards/cards';
 
 export default function Home() {

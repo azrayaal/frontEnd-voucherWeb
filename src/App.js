@@ -5,6 +5,7 @@ import Home from './pages/home/home';
 import Payment from './pages/payment/payment';
 import NavbarReal from './components/navbar/navbar';
 import Footer from './components/footer/footer';
+import CheckOutForm from './pages/checkout/checkout';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/payment/:id" element={<Payment />} />
+            <Route path="/checkout" element={<CheckOutForm />} />
           </Routes>
         </div>
         <Footer />

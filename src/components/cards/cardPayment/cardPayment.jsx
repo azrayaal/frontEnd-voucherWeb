@@ -1,8 +1,7 @@
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 export default function CardPayment(props) {
   const { payment } = props;
@@ -18,13 +17,13 @@ export default function CardPayment(props) {
           {payment &&
             payment.map((p) => (
               <Row className="g-4 py-2">
-                <Col xs={4} md={4}>
-                  <Card.Img variant="top" src={`https://servertopupgame.azrayaal.space/${p.picture}`} className="rounded" />
-                </Col>
-                <Col xs={6} md={6}>
-                  <Button className="px-5 pt-2" variant="primary mx-3 mb-3">
-                    {p.bank_name}
-                  </Button>
+                <Col xs={12} md={12}>
+                  <div class="input-container " id={p.id} key={p.id}>
+                    <input id="payment" name="payment" value={p.id} type="radio" />
+                    <div class="radio-tile">
+                      <label for="walk"> {p.bank_name}</label>
+                    </div>
+                  </div>
                 </Col>
                 <hr />
               </Row>
