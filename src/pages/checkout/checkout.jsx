@@ -1,10 +1,25 @@
 import React from 'react';
-import { useCallback } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import CoinItem from '../../components/checkout/coinItem';
 import PaymentItem from '../../components/checkout/paymentItem';
 import './chekout.css';
 
 export default function CheckOutForm() {
+  const [dataItem, setDataItem] = useState({});
+  const [dataCheckOut, setDataCheckOut] = useState({});
+
+  useEffect(() => {
+    const dataFromLocal = localStorage.getItem('data-item');
+    const dataCheckOutLocal = localStorage.getItem('checkout-item');
+    const dataLocal = JSON.parse(dataFromLocal);
+    const itemCheckOut = JSON.parse(dataCheckOutLocal);
+
+    setDataItem(dataLocal);
+    setDataCheckOut(itemCheckOut);
+  }, []);
+
+  const IMG = process.env.ROOT_IMG;
   return (
     <div>
       <section class="bg-light checkout mx-auto pt-md-100 pb-md-145 pt-30 pb-30 my-5 rounded">
@@ -21,21 +36,17 @@ export default function CheckOutForm() {
           <div class="game-checkout d-flex flex-row align-items-center pt-md-50 pb-md-50 pt-30 pb-30">
             <div class="pe-4">
               <div class="cropped">
-                <img src="../assets/img/Thumbnail-3.png" class="img-fluid" alt="" />
+                <img src={`${IMG}/${dataItem.picture}`} class="img-fluid" alt="" />
               </div>
             </div>
             <div>
-              <p class="fw-bold text-xl color-palette-1 mb-10">
-                Mobile Legends:
-                <br />
-                The New Battle 2021
-              </p>
-              <p class="color-palette-2 m-0">Category: Mobile</p>
+              <p class="fw-bold text-xl color-palette-1 mb-10">{dataItem.nameGame}</p>
+              {/* <p class="color-palette-2 m-0">Category: Mobile</p> */}
             </div>
           </div>
           <hr />
-          <CoinItem />
-          <PaymentItem />
+          <CoinItem verifyID={dataCheckOut.verifyID} jumlahCoin={dataCheckOut.coinItem.jumlahCoin} jenisCoin={dataCheckOut.coinItem.jenisCoin} hargaCoin={dataCheckOut.coinItem.hargaCoin} />
+          <PaymentItem bank_name={dataCheckOut.paymentItem.bank_name} />
           <label class="checkbox-label text-lg color-palette-1">
             I have transferred the money
             <input type="checkbox" />

@@ -1,10 +1,11 @@
 import React from 'react';
 
-export default function PaymentItem() {
+export default function PaymentItem(props) {
+  const { bank_name } = props;
   return (
     <div class="payment pt-md-50 pb-md-50 pt-10 pb-10">
       <h2 class="fw-bold text-xl color-palette-1 mb-20">Payment Informations</h2>
-      <p class="text-lg color-palette-1 mb-20">
+      {/* <p class="text-lg color-palette-1 mb-20">
         Your Account Name <span class="purchase-details">Masayoshi Angga Zero</span>
       </p>
       <p class="text-lg color-palette-1 mb-20">
@@ -15,9 +16,9 @@ export default function PaymentItem() {
       </p>
       <p class="text-lg color-palette-1 mb-20">
         Bank Account Name <span class="payment-details">PT Store GG Indonesia</span>
-      </p>
+      </p> */}
       <p class="text-lg color-palette-1 mb-20">
-        Bank Number <span class="payment-details">1800 - 9090 - 2021</span>
+        Pembayaran via<span class="payment-details">{bank_name}</span>
       </p>
     </div>
   );

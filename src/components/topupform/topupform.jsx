@@ -1,11 +1,13 @@
-import React from 'react';
-import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-// import { useRoutes } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
+import { useRoutes } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import CardItem from '../cards/cardItem/cardItem';
 import CardPayment from '../cards/cardPayment/cardPayment';
 
@@ -14,11 +16,21 @@ export default function Topupform(props) {
 
   const [verifyID, setVerifyID] = useState('');
   const [verifyEmail, setVerifyEmail] = useState('');
+  const [coinItem, setCoinItem] = useState({});
+  const [paymentItem, setPaymentItem] = useState({});
 
   //   const router = useRoutes();
 
+  const onCoinItemChange = (data) => {
+    setCoinItem(data);
+  };
+
+  const onPaymentItemChange = (data) => {
+    setPaymentItem(data);
+  };
+
   const onSubmit = () => {
-    if (verifyID === '' || verifyEmail === '') {
+    if (verifyID === '' || verifyEmail === '' || coinItem === '' || paymentItem === '') {
       toast.error('Tidak boleh ada yang kosong', {
         theme: 'colored',
       });
@@ -26,13 +38,11 @@ export default function Topupform(props) {
       const data = {
         verifyID,
         verifyEmail,
-        // bankAccountName,
-        // paymentItem,
-        // nominalItem,
+        coinItem,
+        paymentItem,
       };
       localStorage.setItem('checkout-item', JSON.stringify(data));
       console.log('dataperoleh', data);
-      //   router.push('/checkout');
     }
   };
 
@@ -54,10 +64,38 @@ export default function Topupform(props) {
         </Card.Body>
       </Card>
       <br />
-      <CardItem item={item} />
+
+      <Card>
+        <Card.Body>
+          <blockquote className="blockquote mb-0">
+            <p> 2. Pilih Item </p>
+          </blockquote>
+          <br />
+          <Container fluid>
+            <Row className="g-3">
+              {item.map((i) => (
+                <Col xs={12} md={6}>
+                  <CardItem item={i.item} id={i.id} jumlahCoin={i.jumlahCoin} jenisCoin={i.jenisCoin} hargaCoin={i.hargaCoin} key={i.id} onChange={() => onCoinItemChange(i)} />
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </Card.Body>
+      </Card>
+
       <br />
-      <CardPayment payment={payment} />
+      <Card>
+        <Card.Body>
+          <blockquote className="blockquote mb-0">
+            <p> 3. Metode Pembayaran </p>
+            <hr />
+          </blockquote>
+          <br />
+          <Container fluid>{payment && payment.map((p) => <CardPayment payment={payment} onChange={() => onPaymentItemChange(p)} bank_name={p.bank_name} id={p.id} key={p.id} />)}</Container>
+        </Card.Body>
+      </Card>
       <br />
+
       <Card>
         <Card.Body>
           <blockquote className="blockquote mb-0">
@@ -68,7 +106,7 @@ export default function Topupform(props) {
           </Form>
         </Card.Body>
         <Button variant="primary mx-3 mb-3" onClick={onSubmit}>
-          Beli
+          <a href="/checkout">Beli</a>
         </Button>
       </Card>
     </form>
