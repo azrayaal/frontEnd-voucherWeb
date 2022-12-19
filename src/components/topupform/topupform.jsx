@@ -105,9 +105,9 @@ export default function Topupform(props) {
             <Form.Control type="search" placeholder="Masukkan Email:" className="me-2" aria-label="Search" value={verifyEmail} onChange={(event) => setVerifyEmail(event.target.value)} />
           </Form>
         </Card.Body>
-        <Button variant="primary mx-3 mb-3" onClick={onSubmit}>
-          <a href="/checkout">Beli</a>
-        </Button>
+        <a href="/checkout" className="btn btn-primary mx-3 mb-4" onClick={onSubmit}>
+          Beli
+        </a>
       </Card>
     </form>
   );

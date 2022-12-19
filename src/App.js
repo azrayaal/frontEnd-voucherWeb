@@ -6,6 +6,7 @@ import Payment from './pages/payment/payment';
 import NavbarReal from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 import CheckOutForm from './pages/checkout/checkout';
+import CheckoutSucces from './pages/checkout/checkout-succes';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/payment/:id" element={<Payment />} />
             <Route path="/checkout" element={<CheckOutForm />} />
+            <Route path="/checkout-succes" element={<CheckoutSucces />} />
           </Routes>
         </div>
         <Footer />

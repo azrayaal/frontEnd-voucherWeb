@@ -17,3 +17,11 @@ export async function getDetaivoucher(id) {
   // return axiosResponse.data;
   return response.data;
 }
+
+export async function setCheckout(data) {
+  const URL = `transaction/checkout`;
+  const response = await axios.post(`${ROOT_API}/${URL}`, data);
+  // const axiosResponse = response.data;
+  // return axiosResponse.data;
+  return response.data;
+}

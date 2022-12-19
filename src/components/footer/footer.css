@@ -4,9 +4,10 @@ footer {
   width: 100%;
 }
 
-.text-center {
+.textfooter {
   background-color: #ff0f39;
   color: #feda15;
+  text-align: center;
 }
 
 .footerfix {

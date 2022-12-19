@@ -14,6 +14,7 @@ export default function CoinItem(props) {
         Order ID <span class="purchase-details">#GG001</span>
       </p> */}
       <p class="text-lg color-palette-1 mb-20">
+        {/* Item <span class="purchase-details">{`${jumlahCoin} ${jenisCoin}`}</span> */}
         Item <span class="purchase-details">{`${jumlahCoin} ${jenisCoin}`}</span>
       </p>
       <p class="text-lg color-palette-1 mb-20">

@@ -1,22 +1,26 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import CheckoutConfirmation from '../../components/checkout/checkoutConfirmation';
 import CoinItem from '../../components/checkout/coinItem';
 import PaymentItem from '../../components/checkout/paymentItem';
 import './chekout.css';
 
 export default function CheckOutForm() {
   const [dataItem, setDataItem] = useState({});
-  const [dataCheckOut, setDataCheckOut] = useState({});
+  const [dataCheckOut, setDataCheckOut] = useState({
+    verifyID: '',
+    coinItem: { jumlahCoin: '', jenisCoin: '', hargaCoin: '' },
+    paymentItem: { bank_name: '' },
+  });
 
   useEffect(() => {
     const dataFromLocal = localStorage.getItem('data-item');
     const dataCheckOutLocal = localStorage.getItem('checkout-item');
     const dataLocal = JSON.parse(dataFromLocal);
     const itemCheckOut = JSON.parse(dataCheckOutLocal);
-
     setDataItem(dataLocal);
     setDataCheckOut(itemCheckOut);
+    console.log('data', itemCheckOut);
   }, []);
 
   const IMG = process.env.ROOT_IMG;
@@ -46,17 +50,10 @@ export default function CheckOutForm() {
           </div>
           <hr />
           <CoinItem verifyID={dataCheckOut.verifyID} jumlahCoin={dataCheckOut.coinItem.jumlahCoin} jenisCoin={dataCheckOut.coinItem.jenisCoin} hargaCoin={dataCheckOut.coinItem.hargaCoin} />
+
           <PaymentItem bank_name={dataCheckOut.paymentItem.bank_name} />
-          <label class="checkbox-label text-lg color-palette-1">
-            I have transferred the money
-            <input type="checkbox" />
-            <span class="checkmark"></span>
-          </label>
-          <div class="d-md-block d-flex flex-column flex-wrap align-items-center w-100  py-3 mx-auto ">
-            <a class="btn btn-confirm-payment rounded-pill fw-medium text-white border-0 text-lg" href="./complete-checkout.html " role="button">
-              Confirm Payment
-            </a>
-          </div>
+
+          <CheckoutConfirmation />
         </div>
       </section>
     </div>
