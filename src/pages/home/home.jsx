@@ -11,7 +11,8 @@ import Kartu from '../../components/cards/cards';
 
 export default function Home() {
   // const CARD_API = 'http://localhost:4000/voucher/getall';
-  const CARD_API = 'http://localhost:4020/voucher';
+  // const CARD_API = 'http://localhost:4020/voucher';
+  const CARD_API = process.env.LANDINGPAGE;
 
   const [thumbnail, setTuhmbnail] = useState([]);
 
